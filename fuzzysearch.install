@@ -49,12 +49,14 @@ function fuzzysearch_disable() {
   $query->addField('s', 'machine_name');
   $query->condition('class', 'fuzzysearch_service');
   $servers = $query->execute()->fetchAssoc();
-  foreach ($servers as $server) {
-    // Disable indexes.
-    db_update('search_api_index')
-      ->condition('server', $server)
-      ->fields(array('enabled' => 0))
-      ->execute();
+  if ($servers = $query->execute()->fetchAssoc()) {
+    foreach ($servers as $server) {
+      // Disable indexes.
+      db_update('search_api_index')
+        ->condition('server', $server)
+        ->fields(array('enabled' => 0))
+        ->execute();
+    }
   }
   // Disable the servers.
   db_update('search_api_server')

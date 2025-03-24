@@ -103,7 +103,7 @@ function _fuzzysearch_create_default_server_index() {
           'settings' => array(
             'title' => 0,
             'alt' => 1,
-            'tags' => 'h1 = 5 h2 = 3 h3 = 2 strong = 2 b = 2 em = 1.5 u = 1.5',
+            'tags' => "h1 = 5\nh2 = 3\nh3 = 2\nstrong = 2\nb = 2\nem = 1.5\nu = 1.5",
           ),
         ),
         'search_api_tokenizer' => array(
